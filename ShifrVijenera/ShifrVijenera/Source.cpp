@@ -25,6 +25,13 @@ using namespace std;
 //	}
 //	cout << "-----------------------------" << endl;
 //}
+
+/// <summary>
+/// функция удлинения ключа
+/// </summary>
+/// <param name="строка для замера длины"></param>
+/// <param name="шифр"></param>
+/// <param name="удлиненный шифр"></param>
 void ShifrKey(string str, string shifr, string &newshifr)// функция удлинения ключа
 {    int j = 0;
 	for (size_t i = 0; i < str.length(); i++)
@@ -35,20 +42,32 @@ void ShifrKey(string str, string shifr, string &newshifr)// функция удлинения кл
 			j = 0;
 			}
 	}
+/// <summary>
+/// функция шифровки
+/// </summary>
+/// <param name="оригинальный текст"></param>
+/// <param name="удлиненный ключ"></param>
+/// <param name="шифрованный текст"></param>
 void shifrCript(string str, string key, string &newstr)//функция шифровки
 {
 	for (size_t i = 0; i < str.length(); i++)
 	{
-		newstr += char((int(str[i]) + int(key[i])) % 256);
+		newstr += char((int(str[i]) + int(key[i])) % 255);
 	}
 
 	
 }
+/// <summary>
+/// функция дешифровки
+/// </summary>
+/// <param name="шифрованный текст"></param>
+/// <param name="удлинненый ключ"></param>
+/// <param name="дешифрованный текст"></param>
 void shifrDecript(string str, string key, string& newstr)//функция дешифровки
 {
 	for (size_t i = 0; i < str.length(); i++)
 	{
-		newstr += char((int(str[i]) - int(key[i])) % 256);
+		newstr += char((int(str[i]) - int(key[i])) % 255);
 	}
 
 
@@ -110,6 +129,7 @@ int main() {
 	cout << "Начинаем шифровать, нажмите любую цифру" << endl;
 	cin >> x;
 	ShifrKey(str2, shifr, *pAddShifr);
+	
     shifrCript(str2, addShifr, *pencryptText);
 	cout << "Так выглядит зашифрованное сообщение" << endl;
     cout << encryptText<<endl;
